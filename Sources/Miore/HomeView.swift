@@ -42,9 +42,11 @@ struct HomeView: View {
                 AmbientGlow(color: Color(hex: settings.homeAccentHex), size: proxy.size)
                     .allowsHitTesting(false)
 
-                ScanlineOverlay()
-                    .opacity(0.045)
-                    .allowsHitTesting(false)
+                if !reduceMotion {
+                    ScanlineOverlay()
+                        .opacity(0.035)
+                        .allowsHitTesting(false)
+                }
 
                 if model.editingHome {
                     HomeAlignmentGrid()
@@ -122,17 +124,15 @@ struct HomeView: View {
                             Circle()
                                 .fill(
                                     RadialGradient(
-                                        colors: [accent.opacity(0.24), accent.opacity(0.08), .clear],
+                                        colors: [accent.opacity(0.16), accent.opacity(0.045), .clear],
                                         center: .center,
                                         startRadius: 0,
-                                        endRadius: layout.logoSize * 0.72
+                                        endRadius: layout.logoSize * 0.66
                                     )
                                 )
-                                .frame(width: layout.logoSize * 1.55, height: layout.logoSize * 1.55)
-                                .blur(radius: layout.compact ? 13 : 20)
+                                .frame(width: layout.logoSize * 1.42, height: layout.logoSize * 1.42)
                                 .allowsHitTesting(false)
                         }
-                        .shadow(color: accent.opacity(0.28), radius: layout.compact ? 16 : 24)
                 }
                 DraggableHomeItem(
                     x: adaptiveBinding($settings.homeBrandX, layout.brand.x, amount: layout.adaptation),
@@ -168,7 +168,9 @@ struct HomeView: View {
                 ) { launchControls(pickerWidth: layout.pickerWidth) }
             }
         }
-        .onDisappear { model.editingHome = false }
+        .onDisappear {
+            if model.editingHome { model.editingHome = false }
+        }
     }
 
     private func adaptiveBinding(_ source: Binding<Double>, _ fallback: CGFloat, amount: CGFloat) -> Binding<Double> {

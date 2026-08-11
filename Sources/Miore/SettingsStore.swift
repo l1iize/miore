@@ -198,8 +198,8 @@ final class SettingsStore: ObservableObject {
 
     func persistAIEndpoint(_ value: String? = nil) {
         let completed = provider.completedEndpoint(value ?? endpoint)
+        guard endpoint != completed else { return }
         endpoint = completed
-        config.set(completed, forKey: Key.endpoint)
     }
 
     static var officialGameDirectory: String {

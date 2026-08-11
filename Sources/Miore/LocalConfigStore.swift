@@ -5,8 +5,10 @@ final class LocalConfigStore: @unchecked Sendable {
     static let shared = LocalConfigStore()
 
     private let lock = NSLock()
+    private let persistenceQueue = DispatchQueue(label: "Miore.LocalConfigStore.persistence", qos: .utility)
     private let fileURL: URL
     private var values: [String: Any] = [:]
+    private var saveGeneration: UInt64 = 0
 
     private init() {
         let base = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
@@ -32,14 +34,14 @@ final class LocalConfigStore: @unchecked Sendable {
     func set(_ value: Any, forKey key: String) {
         lock.lock()
         values[key] = value
-        saveLocked()
+        scheduleSaveLocked()
         lock.unlock()
     }
 
     func removeObject(forKey key: String) {
         lock.lock()
         values.removeValue(forKey: key)
-        saveLocked()
+        scheduleSaveLocked()
         lock.unlock()
     }
 
@@ -48,9 +50,25 @@ final class LocalConfigStore: @unchecked Sendable {
         return values[key]
     }
 
-    private func saveLocked() {
-        guard JSONSerialization.isValidJSONObject(values),
-              let data = try? JSONSerialization.data(withJSONObject: values, options: [.prettyPrinted, .sortedKeys]) else { return }
+    private func scheduleSaveLocked() {
+        saveGeneration &+= 1
+        let generation = saveGeneration
+        persistenceQueue.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+            self?.persistIfCurrent(generation)
+        }
+    }
+
+    private func persistIfCurrent(_ generation: UInt64) {
+        lock.lock()
+        guard generation == saveGeneration else {
+            lock.unlock()
+            return
+        }
+        let snapshot = values
+        lock.unlock()
+
+        guard JSONSerialization.isValidJSONObject(snapshot),
+              let data = try? JSONSerialization.data(withJSONObject: snapshot, options: [.prettyPrinted, .sortedKeys]) else { return }
         try? data.write(to: fileURL, options: .atomic)
         try? FileManager.default.setAttributes([.posixPermissions: 0o600], ofItemAtPath: fileURL.path)
     }

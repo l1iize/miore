@@ -29,11 +29,6 @@ struct RootView: View {
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .transition(.asymmetric(
-                    insertion: .move(edge: .trailing).combined(with: .opacity),
-                    removal: .move(edge: .leading).combined(with: .opacity)
-                ))
-                .animation(.spring(response: 0.35, dampingFraction: 0.82), value: model.section)
             }
             if let notice = model.notice {
                 NoticeView(text: notice) { model.notice = nil }

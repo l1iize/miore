@@ -152,16 +152,13 @@ struct HomeView: View {
                     size: proxy.size,
                     enabled: model.editingHome
                 ) {
-                    VStack(spacing: layout.compact ? 3 : 6) {
-                        Text(model.selectedInstance?.loader.rawValue ?? "NO INSTANCE")
-                            .font(.miore(size: 10, weight: .medium, design: .monospaced))
-                            .tracking(2.3)
-                        Text(model.selectedInstance?.name ?? L10n.t("home.no_instance"))
-                            .font(.miore(size: layout.compact ? 11 : 13, weight: .medium))
-                            .foregroundColor(MioreTheme.muted)
-                            .lineLimit(1)
-                    }
-                    .frame(width: layout.centerWidth, height: layout.compact ? 38 : 46)
+                    HomeVersionPicker(
+                        selection: Binding(get: { model.selectedInstanceID ?? "" }, set: { model.selectInstance($0) }),
+                        instances: model.instances,
+                        accent: Color(hex: settings.homeAccentHex),
+                        width: layout.centerWidth,
+                        compact: layout.compact
+                    )
                 }
                 DraggableHomeItem(
                     x: adaptiveBinding($settings.homeLaunchX, layout.launch.x, amount: layout.adaptation),
@@ -240,15 +237,6 @@ struct HomeView: View {
 
     private func launchControls(pickerWidth: CGFloat) -> some View {
         VStack(spacing: 14) {
-            if !model.instances.isEmpty {
-                InstancePicker(
-                    selection: Binding(get: { model.selectedInstanceID ?? "" }, set: { model.selectInstance($0) }),
-                    instances: model.instances,
-                    accent: Color(hex: settings.homeAccentHex),
-                    width: pickerWidth
-                )
-                .transition(.move(edge: .top).combined(with: .opacity))
-            }
             HStack(spacing: 10) {
                 if launcher.state.isActive {
                     Button(L10n.t("home.stop")) { launcher.stop() }
@@ -373,22 +361,42 @@ private struct AdaptiveHomeLayout {
     }
 }
 
-private struct InstancePicker: View {
+private struct HomeVersionPicker: View {
     @Binding var selection: String
     let instances: [GameInstance]
     let accent: Color
     let width: CGFloat
+    let compact: Bool
+
+    private var selected: GameInstance? {
+        instances.first(where: { $0.id == selection }) ?? instances.first
+    }
 
     var body: some View {
-        Picker("", selection: $selection) {
-            ForEach(instances) { instance in
-                Text("\(instance.loader.subtitle) · \(instance.name)").tag(instance.id)
+        VStack(spacing: compact ? 3 : 5) {
+            Text(selected?.loader.rawValue.uppercased() ?? "NO INSTANCE")
+                .font(.miore(size: 9, weight: .medium, design: .monospaced))
+                .tracking(2)
+                .foregroundColor(accent.opacity(0.82))
+            if instances.isEmpty {
+                Text(L10n.t("home.no_instance"))
+                    .font(.miore(size: compact ? 11 : 13, weight: .medium))
+                    .foregroundColor(MioreTheme.muted)
+                    .frame(width: width, height: 24)
+            } else {
+                Picker("", selection: $selection) {
+                    ForEach(instances) { instance in
+                        Text("\(instance.gameVersion) · \(instance.name)").tag(instance.id)
+                    }
+                }
+                .labelsHidden()
+                .pickerStyle(.menu)
+                .font(.miore(size: compact ? 11 : 13, weight: .medium))
+                .frame(width: width, height: 24)
+                .help("Choose a Minecraft version")
             }
         }
-        .labelsHidden()
-        .pickerStyle(.menu)
-        .frame(width: width)
-        .help("Choose a Minecraft instance")
+        .frame(width: width, height: compact ? 42 : 48)
     }
 }
 

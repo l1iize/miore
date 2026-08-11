@@ -123,9 +123,9 @@ private struct InstallerOverlay<Content: View>: View {
                 }
                 .buttonStyle(.plain)
                 .foregroundColor(MioreTheme.muted)
-                .background(Circle().fill(MioreTheme.foreground.opacity(0.07)))
+                .background(Circle().fill(MioreTheme.background))
                 .overlay(Circle().stroke(MioreTheme.border, lineWidth: 1))
-                .padding(18)
+                .offset(x: 15, y: -15)
                 .help(L10n.t("common.close"))
                 .keyboardShortcut(.cancelAction)
             }
@@ -155,6 +155,7 @@ private struct LoaderInstallerSheet: View {
                     Text(L10n.t("installer.target", model.selectedInstance?.gameVersion ?? L10n.t("installer.not_selected"))).font(.miore(size: 11)).foregroundColor(MioreTheme.muted)
                 }
                 Spacer()
+                Color.clear.frame(width: 34, height: 30)
             }
             Hairline()
             ForEach(InstallableLoader.allCases) { loader in
@@ -203,7 +204,7 @@ private struct InstallerSheet: View {
                 }
                 Spacer()
                 Toggle(L10n.t("installer.snapshots"), isOn: $includeSnapshots).toggleStyle(.checkbox).font(.miore(size: 11))
-                EmptyView()
+                Color.clear.frame(width: 34, height: 30)
             }
             Hairline()
             if installer.loadingManifest {

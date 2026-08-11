@@ -9,6 +9,13 @@ import AppKit
     #expect(NSFont(name: MioreFont.familyName, size: 12) != nil)
 }
 
+@Test func rewritesMinecraftDownloadMirrors() throws {
+    #expect(MinecraftDownloadRouter.mirrorURL(for: URL(string: "https://piston-meta.mojang.com/v1/packages/a/version.json")!)?.absoluteString == "https://bmclapi2.bangbang93.com/v1/packages/a/version.json")
+    #expect(MinecraftDownloadRouter.mirrorURL(for: URL(string: "https://libraries.minecraft.net/com/example/demo.jar")!)?.absoluteString == "https://bmclapi2.bangbang93.com/maven/com/example/demo.jar")
+    #expect(MinecraftDownloadRouter.mirrorURL(for: URL(string: "https://resources.download.minecraft.net/ab/hash")!)?.absoluteString == "https://bmclapi2.bangbang93.com/assets/ab/hash")
+    #expect(MinecraftDownloadRouter.mirrorURL(for: URL(string: "https://example.com/file.jar")!) == nil)
+}
+
 @Test func rejectsUnsafeContentFilenames() throws {
     #expect(try ModrinthService.validatedContentFilename("sodium.jar") == "sodium.jar")
     #expect(throws: ModrinthError.self) { try ModrinthService.validatedContentFilename("../escape.jar") }

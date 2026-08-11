@@ -12,6 +12,12 @@ private struct VersionManifest: Codable {
     let versions: [RemoteVersion]
 }
 
+private struct DownloadItem: Sendable {
+    let url: URL
+    let expectedSHA1: String?
+    let destination: URL
+}
+
 enum InstallError: LocalizedError {
     case badManifest, invalidMetadata, missingDownload(String), checksum(String)
     var errorDescription: String? {
@@ -33,16 +39,25 @@ final class VersionInstaller: ObservableObject {
     @Published private(set) var status = ""
     @Published var error: String?
 
+    private let router = MinecraftDownloadRouter.shared
+    private let parallelDownloads = 8
+
     func loadManifest() {
         guard !loadingManifest else { return }
         loadingManifest = true; error = nil
         Task {
             do {
-                let url = URL(string: "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json")!
-                let (data, response) = try await URLSession.shared.data(from: url)
-                try Self.validate(response)
-                versions = try Self.decodeManifest(data)
-                loadingManifest = false
+                var lastError: Error = InstallError.badManifest
+                for url in MinecraftDownloadRouter.manifestURLCandidates() {
+                    do {
+                        versions = try Self.decodeManifest(await router.data(from: url))
+                        loadingManifest = false
+                        return
+                    } catch {
+                        lastError = error
+                    }
+                }
+                throw lastError
             } catch {
                 self.error = error.localizedDescription; loadingManifest = false
             }
@@ -58,8 +73,7 @@ final class VersionInstaller: ObservableObject {
             let versionExisted = FileManager.default.fileExists(atPath: versionDir.path)
             do {
                 try FileManager.default.createDirectory(at: versionDir, withIntermediateDirectories: true)
-                let (metadata, response) = try await URLSession.shared.data(from: version.url)
-                try Self.validate(response)
+                let metadata = try await router.data(from: version.url)
                 guard let json = try JSONSerialization.jsonObject(with: metadata) as? [String: Any] else { throw InstallError.invalidMetadata }
                 try metadata.write(to: versionDir.appendingPathComponent("\(version.id).json"), options: .atomic)
 
@@ -67,13 +81,11 @@ final class VersionInstaller: ObservableObject {
                 guard let client = (json["downloads"] as? [String: Any])?["client"] as? [String: Any] else { throw InstallError.missingDownload("client") }
                 try await download(record: client, to: versionDir.appendingPathComponent("\(version.id).jar"))
 
-                let libraryRecords = Self.libraryDownloads(json)
-                status = "Downloading libraries · 0 / \(libraryRecords.count)"
-                for (index, item) in libraryRecords.enumerated() {
-                    try await download(record: item.record, to: root.appendingPathComponent("libraries/\(item.path)"))
-                    progress = 0.08 + 0.32 * Double(index + 1) / Double(max(libraryRecords.count, 1))
-                    status = "Downloading libraries · \(index + 1) / \(libraryRecords.count)"
+                let libraryItems = try Self.libraryDownloads(json).map {
+                    try Self.downloadItem(record: $0.record, destination: root.appendingPathComponent("libraries/\($0.path)"))
                 }
+                status = "Downloading libraries · 0 / \(libraryItems.count)"
+                try await downloadConcurrently(libraryItems, progressRange: 0.08...0.40, label: "Downloading libraries")
 
                 if let assetIndex = json["assetIndex"] as? [String: Any],
                    let assetID = assetIndex["id"] as? String {
@@ -84,15 +96,14 @@ final class VersionInstaller: ObservableObject {
                     guard let indexJSON = try JSONSerialization.jsonObject(with: indexData) as? [String: Any],
                           let objects = indexJSON["objects"] as? [String: [String: Any]] else { throw InstallError.invalidMetadata }
                     let unique = Dictionary(grouping: objects.values, by: { $0["hash"] as? String ?? UUID().uuidString }).compactMap { $0.value.first }
-                    status = "Downloading assets · 0 / \(unique.count)"
-                    for (index, object) in unique.enumerated() {
-                        guard let hash = object["hash"] as? String else { continue }
+                    let assetItems = try unique.compactMap { object -> DownloadItem? in
+                        guard let hash = object["hash"] as? String else { return nil }
                         let relative = "\(hash.prefix(2))/\(hash)"
-                        let url = "https://resources.download.minecraft.net/\(relative)"
-                        try await download(record: ["url": url, "sha1": hash], to: root.appendingPathComponent("assets/objects/\(relative)"))
-                        progress = 0.42 + 0.56 * Double(index + 1) / Double(max(unique.count, 1))
-                        if index % 20 == 0 { status = "Downloading assets · \(index + 1) / \(unique.count)" }
+                        guard let url = URL(string: "https://resources.download.minecraft.net/\(relative)") else { throw InstallError.invalidMetadata }
+                        return DownloadItem(url: url, expectedSHA1: hash, destination: root.appendingPathComponent("assets/objects/\(relative)"))
                     }
+                    status = "Downloading assets · 0 / \(assetItems.count)"
+                    try await downloadConcurrently(assetItems, progressRange: 0.42...0.98, label: "Downloading assets")
                 }
                 status = "All done ♡"; progress = 1
                 installingID = nil
@@ -105,23 +116,56 @@ final class VersionInstaller: ObservableObject {
     }
 
     private func download(record: [String: Any], to destination: URL) async throws {
-        let fm = FileManager.default
-        let expected = record["sha1"] as? String
-        if fm.fileExists(atPath: destination.path), expected == nil || Self.sha1(destination) == expected { return }
-        guard let address = record["url"] as? String, let url = URL(string: address) else { throw InstallError.missingDownload(destination.lastPathComponent) }
-        let (temporary, response) = try await URLSession.shared.download(from: url)
-        try Self.validate(response)
-        try fm.createDirectory(at: destination.deletingLastPathComponent(), withIntermediateDirectories: true)
-        if fm.fileExists(atPath: destination.path) { try fm.removeItem(at: destination) }
-        try fm.moveItem(at: temporary, to: destination)
-        if let expected, Self.sha1(destination) != expected {
-            try? fm.removeItem(at: destination)
-            throw InstallError.checksum(destination.path)
+        try await download(item: Self.downloadItem(record: record, destination: destination))
+    }
+
+    private func downloadConcurrently(_ items: [DownloadItem], progressRange: ClosedRange<Double>, label: String) async throws {
+        guard !items.isEmpty else { progress = progressRange.upperBound; return }
+        var iterator = items.makeIterator()
+        var completed = 0
+        try await withThrowingTaskGroup(of: Void.self) { group in
+            for _ in 0..<min(parallelDownloads, items.count) {
+                if let item = iterator.next() { group.addTask { try await self.download(item: item) } }
+            }
+            while try await group.next() != nil {
+                completed += 1
+                let fraction = Double(completed) / Double(items.count)
+                progress = progressRange.lowerBound + (progressRange.upperBound - progressRange.lowerBound) * fraction
+                if completed == items.count || completed % 10 == 0 { status = "\(label) · \(completed) / \(items.count)" }
+                if let item = iterator.next() { group.addTask { try await self.download(item: item) } }
+            }
         }
     }
 
-    private static func validate(_ response: URLResponse) throws {
-        guard let http = response as? HTTPURLResponse, (200..<300).contains(http.statusCode) else { throw URLError(.badServerResponse) }
+    private func download(item: DownloadItem) async throws {
+        let fm = FileManager.default
+        if fm.fileExists(atPath: item.destination.path),
+           item.expectedSHA1 == nil || Self.sha1(item.destination) == item.expectedSHA1 { return }
+        var lastError: Error = URLError(.badServerResponse)
+        for candidate in await router.downloadCandidates(for: item.url) {
+            do {
+                let temporary = try await router.download(from: candidate)
+                guard item.expectedSHA1 == nil || Self.sha1(temporary) == item.expectedSHA1 else {
+                    try? fm.removeItem(at: temporary)
+                    throw InstallError.checksum(item.destination.path)
+                }
+                try fm.createDirectory(at: item.destination.deletingLastPathComponent(), withIntermediateDirectories: true)
+                if fm.fileExists(atPath: item.destination.path) {
+                    _ = try fm.replaceItemAt(item.destination, withItemAt: temporary)
+                } else {
+                    try fm.moveItem(at: temporary, to: item.destination)
+                }
+                return
+            } catch {
+                lastError = error
+            }
+        }
+        throw lastError
+    }
+
+    private static func downloadItem(record: [String: Any], destination: URL) throws -> DownloadItem {
+        guard let address = record["url"] as? String, let url = URL(string: address) else { throw InstallError.missingDownload(destination.lastPathComponent) }
+        return DownloadItem(url: url, expectedSHA1: record["sha1"] as? String, destination: destination)
     }
 
     private static func sha1(_ url: URL) -> String? {

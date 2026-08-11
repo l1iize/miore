@@ -53,7 +53,7 @@ Miore 不会内置或借用其他启动器的 Microsoft Client ID。导入后的
 ## 从源码构建
 
 ```sh
-git clone <your-repository-url>
+git clone https://github.com/l1iize/miore.git
 cd miore
 swift test
 ./scripts/build-app.sh

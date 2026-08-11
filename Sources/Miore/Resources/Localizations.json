@@ -1,0 +1,1106 @@
+{
+  "nav.home": [
+    "主页",
+    "Home",
+    "ホーム",
+    "主頁"
+  ],
+  "nav.instances": [
+    "实例",
+    "Instances",
+    "インスタンス",
+    "實例"
+  ],
+  "nav.content": [
+    "内容",
+    "Content",
+    "コンテンツ",
+    "內容"
+  ],
+  "nav.console": [
+    "控制台",
+    "Console",
+    "コンソール",
+    "控制台"
+  ],
+  "nav.assistant": [
+    "Mio 助手",
+    "Mio",
+    "Mio アシスタント",
+    "Mio 助手"
+  ],
+  "nav.settings": [
+    "设置",
+    "Settings",
+    "設定",
+    "設定"
+  ],
+  "common.install": [
+    "安装",
+    "Install",
+    "インストール",
+    "安裝"
+  ],
+  "common.close": [
+    "关闭",
+    "Close",
+    "閉じる",
+    "關閉"
+  ],
+  "common.refresh": [
+    "刷新",
+    "Refresh",
+    "更新",
+    "重新整理"
+  ],
+  "common.choose": [
+    "选择",
+    "Choose",
+    "選択",
+    "選擇"
+  ],
+  "common.search": [
+    "搜索",
+    "Search",
+    "検索",
+    "搜尋"
+  ],
+  "common.cancel": [
+    "取消",
+    "Cancel",
+    "キャンセル",
+    "取消"
+  ],
+  "common.done": [
+    "完成",
+    "Done",
+    "完了",
+    "完成"
+  ],
+  "common.retry": [
+    "重试",
+    "Retry",
+    "再試行",
+    "重試"
+  ],
+  "common.clear": [
+    "清空",
+    "Clear",
+    "クリア",
+    "清除"
+  ],
+  "common.stop": [
+    "停止",
+    "Stop",
+    "停止",
+    "停止"
+  ],
+  "common.reset": [
+    "重置",
+    "Reset",
+    "リセット",
+    "重設"
+  ],
+  "common.scan": [
+    "扫描",
+    "Scan",
+    "スキャン",
+    "掃描"
+  ],
+  "common.login": [
+    "登录",
+    "Sign in",
+    "サインイン",
+    "登入"
+  ],
+  "common.logout": [
+    "退出登录",
+    "Sign out",
+    "サインアウト",
+    "登出"
+  ],
+  "common.ok": [
+    "知道了",
+    "OK",
+    "OK",
+    "知道了"
+  ],
+  "home.local": [
+    "本地档案",
+    "Local profile",
+    "ローカルプロフィール",
+    "本機檔案"
+  ],
+  "home.microsoft": [
+    "MICROSOFT",
+    "MICROSOFT",
+    "MICROSOFT",
+    "MICROSOFT"
+  ],
+  "home.signin": [
+    "登录 Microsoft",
+    "Sign in with Microsoft",
+    "Microsoft でサインイン",
+    "登入 Microsoft"
+  ],
+  "home.connected": [
+    "正版账户已连接",
+    "Licensed account connected",
+    "正規アカウント接続済み",
+    "正版帳戶已連線"
+  ],
+  "home.expired": [
+    "会话已过期，点击续期",
+    "Session expired — click to renew",
+    "セッション期限切れ — クリックして更新",
+    "工作階段已過期，點擊續期"
+  ],
+  "home.welcome": [
+    "欢迎回来。",
+    "Welcome back.",
+    "おかえりなさい。",
+    "歡迎回來。"
+  ],
+  "home.no_instance": [
+    "未检测到 Minecraft",
+    "No Minecraft instance found",
+    "Minecraft が見つかりません",
+    "未偵測到 Minecraft"
+  ],
+  "home.configure": [
+    "配置游戏目录",
+    "Configure game folder",
+    "ゲームフォルダーを設定",
+    "設定遊戲目錄"
+  ],
+  "home.launch": [
+    "启动 Minecraft",
+    "Launch Minecraft",
+    "Minecraft を起動",
+    "啟動 Minecraft"
+  ],
+  "home.stop": [
+    "停止游戏",
+    "Stop game",
+    "ゲームを停止",
+    "停止遊戲"
+  ],
+  "home.manage_account": [
+    "管理账户",
+    "Manage account",
+    "アカウントを管理",
+    "管理帳戶"
+  ],
+  "home.clock": [
+    "本地时间",
+    "Local time",
+    "ローカル時刻",
+    "本機時間"
+  ],
+  "home.instances_count": [
+    "%d 个实例",
+    "%d instances",
+    "%d インスタンス",
+    "%d 個實例"
+  ],
+  "settings.show_clock": [
+    "显示主页时钟组件",
+    "Show clock widget on Home",
+    "ホームに時計ウィジェットを表示",
+    "在主頁顯示時鐘小工具"
+  ],
+  "settings.show_instance_widget": [
+    "显示实例组件",
+    "Show instance widget",
+    "インスタンスウィジェットを表示",
+    "顯示實例小工具"
+  ],
+  "settings.show_runtime_widget": [
+    "显示运行时组件",
+    "Show runtime widget",
+    "ランタイムウィジェットを表示",
+    "顯示執行環境小工具"
+  ],
+  "home.current_instance": [
+    "当前实例",
+    "Current instance",
+    "現在のインスタンス",
+    "目前實例"
+  ],
+  "home.no_instance_short": [
+    "未选择实例",
+    "No instance selected",
+    "インスタンス未選択",
+    "未選擇實例"
+  ],
+  "home.runtime": [
+    "运行时",
+    "Runtime",
+    "ランタイム",
+    "執行環境"
+  ],
+  "home.memory": [
+    "内存",
+    "Memory",
+    "メモリ",
+    "記憶體"
+  ],
+  "home.java_recommended": [
+    "建议 Java %d",
+    "Java %d recommended",
+    "Java %d を推奨",
+    "建議 Java %d"
+  ],
+  "instances.title": [
+    "本地实例",
+    "Local instances",
+    "ローカルインスタンス",
+    "本機實例"
+  ],
+  "instances.detail": [
+    "读取现有 Minecraft 版本，并识别常见模组加载器。",
+    "Find installed Minecraft versions and mod loaders.",
+    "インストール済みの Minecraft と Mod ローダーを検出します。",
+    "讀取現有 Minecraft 版本並識別常見模組載入器。"
+  ],
+  "instances.install_vanilla": [
+    "安装原版",
+    "Install vanilla",
+    "バニラをインストール",
+    "安裝原版"
+  ],
+  "instances.install_loader": [
+    "安装加载器",
+    "Install loader",
+    "ローダーをインストール",
+    "安裝載入器"
+  ],
+  "instances.empty": [
+    "没有找到已安装的版本",
+    "No installed versions found",
+    "インストール済みバージョンがありません",
+    "找不到已安裝的版本"
+  ],
+  "instances.empty_detail": [
+    "选择包含 versions 与 libraries 的游戏目录。",
+    "Choose a game folder containing versions and libraries.",
+    "versions と libraries を含むゲームフォルダーを選択してください。",
+    "選擇包含 versions 與 libraries 的遊戲目錄。"
+  ],
+  "instances.choose_folder": [
+    "选择目录",
+    "Choose folder",
+    "フォルダーを選択",
+    "選擇目錄"
+  ],
+  "installer.target": [
+    "目标版本：%@",
+    "Target: %@",
+    "対象バージョン：%@",
+    "目標版本：%@"
+  ],
+  "installer.not_selected": [
+    "未选择",
+    "Not selected",
+    "未選択",
+    "未選擇"
+  ],
+  "installer.minecraft": [
+    "安装 Minecraft",
+    "Install Minecraft",
+    "Minecraft をインストール",
+    "安裝 Minecraft"
+  ],
+  "installer.minecraft_detail": [
+    "从 Mojang 官方分发服务下载原版文件。",
+    "Download vanilla files from Mojang's official service.",
+    "Mojang 公式サービスからバニラファイルをダウンロードします。",
+    "從 Mojang 官方服務下載原版檔案。"
+  ],
+  "installer.snapshots": [
+    "包含快照",
+    "Include snapshots",
+    "スナップショットを含む",
+    "包含快照"
+  ],
+  "content.title": [
+    "内容中心",
+    "Content browser",
+    "コンテンツ",
+    "內容中心"
+  ],
+  "content.detail": [
+    "为当前实例查找兼容的模组、材质包与模组包。",
+    "Find compatible mods, resource packs, and modpacks.",
+    "互換性のある Mod、リソースパック、Mod パックを検索します。",
+    "為目前實例尋找相容的模組、材質包與模組包。"
+  ],
+  "content.target": [
+    "目标实例",
+    "Target instance",
+    "対象インスタンス",
+    "目標實例"
+  ],
+  "content.placeholder": [
+    "搜索 Modrinth…",
+    "Search Modrinth…",
+    "Modrinth を検索…",
+    "搜尋 Modrinth…"
+  ],
+  "content.vanilla_warning": [
+    "当前是原版实例。请先安装并选择模组加载器。",
+    "This is a vanilla instance. Install and select a mod loader first.",
+    "バニラインスタンスです。先に Mod ローダーをインストールしてください。",
+    "目前是原版實例，請先安裝並選擇模組載入器。"
+  ],
+  "content.select_instance": [
+    "先选择一个实例",
+    "Select an instance first",
+    "先にインスタンスを選択",
+    "請先選擇一個實例"
+  ],
+  "content.none": [
+    "没有找到兼容内容",
+    "No compatible content found",
+    "互換性のあるコンテンツがありません",
+    "找不到相容內容"
+  ],
+  "console.title": [
+    "启动控制台",
+    "Launch console",
+    "起動コンソール",
+    "啟動控制台"
+  ],
+  "console.diagnose": [
+    "让 Mio 诊断",
+    "Ask Mio to diagnose",
+    "Mio に診断を依頼",
+    "讓 Mio 診斷"
+  ],
+  "console.autoscroll": [
+    "自动滚动",
+    "Auto-scroll",
+    "自動スクロール",
+    "自動捲動"
+  ],
+  "assistant.title": [
+    "Mio 助手",
+    "Mio Assistant",
+    "Mio アシスタント",
+    "Mio 助手"
+  ],
+  "assistant.detail": [
+    "和 Mio 聊聊天，也可以询问 Minecraft、模组与启动问题。",
+    "Chat with Mio about anything, or ask for help with Minecraft, mods, and launches.",
+    "Mio と気軽に話したり、Minecraft・Mod・起動問題を相談したりできます。",
+    "和 Mio 聊聊天，也可以詢問 Minecraft、模組與啟動問題。"
+  ],
+  "assistant.clear": [
+    "清除对话",
+    "Clear chat",
+    "会話を消去",
+    "清除對話"
+  ],
+  "assistant.unconfigured": [
+    "尚未连接 AI 供应商",
+    "No AI provider connected",
+    "AI プロバイダー未接続",
+    "尚未連接 AI 供應商"
+  ],
+  "assistant.busy": [
+    "Mio 还在处理上一条消息",
+    "Mio is still processing the previous message.",
+    "Mio は前のメッセージを処理中です。",
+    "Mio 還在處理上一則訊息"
+  ],
+  "assistant.keychain": [
+    "API Key 将保存在本地配置文件。",
+    "The API key is stored in Miore’s local config.",
+    "API キーは Miore のローカル設定に保存されます。",
+    "API Key 會儲存在 Miore 的本機設定。"
+  ],
+  "assistant.open_settings": [
+    "打开设置",
+    "Open settings",
+    "設定を開く",
+    "開啟設定"
+  ],
+  "assistant.empty": [
+    "和 Mio 说点什么吧～也可以描述问题或粘贴已脱敏的日志。",
+    "Say hello to Mio, ask anything, or paste a redacted log.",
+    "Mio に話しかけてね。質問や、機密情報を除いたログも送れます。",
+    "和 Mio 說點什麼吧～也可以描述問題或貼上已移除敏感資訊的日誌。"
+  ],
+  "assistant.working": [
+    "Mio 正在想呢…",
+    "Mio is thinking…",
+    "Mio が考えています…",
+    "Mio 正在想呢…"
+  ],
+  "assistant.send": [
+    "发送",
+    "Send",
+    "送信",
+    "傳送"
+  ],
+  "assistant.you": [
+    "你",
+    "You",
+    "あなた",
+    "你"
+  ],
+  "settings.title": [
+    "设置",
+    "Settings",
+    "設定",
+    "設定"
+  ],
+  "settings.detail": [
+    "路径、账户、界面和 AI 接入均保存在本机。",
+    "Paths, accounts, appearance, and AI settings stay on this Mac.",
+    "パス、アカウント、外観、AI 設定はこの Mac に保存されます。",
+    "路徑、帳戶、介面與 AI 設定均保存在本機。"
+  ],
+  "settings.language": [
+    "语言",
+    "Language",
+    "言語",
+    "語言"
+  ],
+  "settings.game_folder": [
+    "游戏目录",
+    "Game folder",
+    "ゲームフォルダー",
+    "遊戲目錄"
+  ],
+  "settings.folder_hint": [
+    "应包含 versions、libraries 与 assets。",
+    "Should contain versions, libraries, and assets.",
+    "versions、libraries、assets を含むフォルダーです。",
+    "應包含 versions、libraries 與 assets。"
+  ],
+  "settings.path_presets": [
+    "路径预设",
+    "Presets",
+    "プリセット",
+    "路徑預設"
+  ],
+  "settings.official": [
+    "官方启动器",
+    "Official Launcher",
+    "公式ランチャー",
+    "官方啟動器"
+  ],
+  "settings.offline_name": [
+    "离线用户名",
+    "Offline username",
+    "オフライン名",
+    "離線使用者名稱"
+  ],
+  "settings.client_id": [
+    "已批准的 Microsoft Client ID",
+    "Approved Microsoft Client ID",
+    "承認済み Microsoft Client ID",
+    "已核准的 Microsoft Client ID"
+  ],
+  "settings.client_hint": [
+    "新 Client ID 必须先通过 Minecraft Services 审批。",
+    "New client IDs require Minecraft Services approval.",
+    "新しい Client ID には Minecraft Services の承認が必要です。",
+    "新的 Client ID 必須先通過 Minecraft Services 審核。"
+  ],
+  "settings.import_account": [
+    "导入官方账户",
+    "Import official account",
+    "公式アカウントを読み込む",
+    "匯入官方帳戶"
+  ],
+  "settings.java": [
+    "Java 运行时",
+    "Java runtimes",
+    "Java ランタイム",
+    "Java 執行環境"
+  ],
+  "settings.java_auto": [
+    "自动为所选实例匹配 Java",
+    "Automatically match Java to the selected instance",
+    "選択したインスタンスに Java を自動適用",
+    "自動為所選實例配對 Java"
+  ],
+  "settings.detect_again": [
+    "重新检测",
+    "Detect again",
+    "再検出",
+    "重新偵測"
+  ],
+  "settings.java_path": [
+    "Java 路径",
+    "Java path",
+    "Java パス",
+    "Java 路徑"
+  ],
+  "settings.home": [
+    "界面",
+    "Appearance",
+    "外観",
+    "介面"
+  ],
+  "settings.background": [
+    "背景",
+    "Background",
+    "背景",
+    "背景"
+  ],
+  "settings.accent": [
+    "强调色",
+    "Accent",
+    "アクセント",
+    "強調色"
+  ],
+  "settings.restore": [
+    "恢复默认",
+    "Restore defaults",
+    "初期設定に戻す",
+    "恢復預設"
+  ],
+  "settings.drag_edit": [
+    "拖动编辑主页",
+    "Edit home layout",
+    "ホーム配置を編集",
+    "拖曳編輯主頁"
+  ],
+  "settings.ai": [
+    "Mio 助手",
+    "Mio Assistant",
+    "Mio アシスタント",
+    "Mio 助手"
+  ],
+  "settings.provider": [
+    "供应商",
+    "Provider",
+    "プロバイダー",
+    "供應商"
+  ],
+  "settings.model": [
+    "模型",
+    "Model",
+    "モデル",
+    "模型"
+  ],
+  "settings.save_key": [
+    "保存密钥",
+    "Save key",
+    "キーを保存",
+    "儲存金鑰"
+  ],
+  "settings.save_endpoint": [
+    "保存链接",
+    "Save endpoint",
+    "接続先を保存",
+    "儲存連結"
+  ],
+  "settings.greeting": [
+    "启动 Miore 时由 Mio 问候",
+    "Let Mio greet me when Miore opens",
+    "Miore 起動時に Mio が挨拶",
+    "啟動 Miore 時由 Mio 問候"
+  ],
+  "settings.privacy": [
+    "行为与隐私",
+    "Behavior & privacy",
+    "動作とプライバシー",
+    "行為與隱私"
+  ],
+  "login.title": [
+    "登录 Microsoft",
+    "Sign in to Microsoft",
+    "Microsoft にサインイン",
+    "登入 Microsoft"
+  ],
+  "login.enter_code": [
+    "在 Microsoft 页面输入此代码",
+    "Enter this code on the Microsoft page",
+    "Microsoft のページでこのコードを入力",
+    "在 Microsoft 頁面輸入此代碼"
+  ],
+  "login.open_page": [
+    "打开登录页面",
+    "Open sign-in page",
+    "サインインページを開く",
+    "開啟登入頁面"
+  ],
+  "login.import": [
+    "导入官方启动器账户",
+    "Import Official Launcher account",
+    "公式ランチャーのアカウントを読み込む",
+    "匯入官方啟動器帳戶"
+  ],
+  "login.import_hint": [
+    "不会读取 Microsoft 密码。官方启动器会话必须仍然有效。",
+    "Miore never reads your Microsoft password. The Official Launcher session must still be valid.",
+    "Microsoft のパスワードは読み取りません。公式ランチャーのセッションが有効である必要があります。",
+    "不會讀取 Microsoft 密碼；官方啟動器工作階段必須仍然有效。"
+  ],
+  "login.approved": [
+    "使用已批准的 Client ID",
+    "Use an approved Client ID",
+    "承認済み Client ID を使用",
+    "使用已核准的 Client ID"
+  ],
+  "login.configure": [
+    "配置 Client ID",
+    "Configure Client ID",
+    "Client ID を設定",
+    "設定 Client ID"
+  ],
+  "content.mod": [
+    "模组",
+    "Mods",
+    "Mod",
+    "模組"
+  ],
+  "content.resourcepack": [
+    "材质包",
+    "Resource packs",
+    "リソースパック",
+    "材質包"
+  ],
+  "content.modpack": [
+    "模组包",
+    "Modpacks",
+    "Mod パック",
+    "模組包"
+  ],
+  "loader.vanilla": [
+    "原版",
+    "Vanilla",
+    "バニラ",
+    "原版"
+  ],
+  "state.idle": [
+    "准备就绪",
+    "Ready",
+    "準備完了",
+    "準備就緒"
+  ],
+  "state.preparing": [
+    "正在准备",
+    "Preparing",
+    "準備中",
+    "正在準備"
+  ],
+  "state.running": [
+    "游戏运行中",
+    "Game running",
+    "ゲーム実行中",
+    "遊戲執行中"
+  ],
+  "state.failed": [
+    "启动失败",
+    "Launch failed",
+    "起動失敗",
+    "啟動失敗"
+  ],
+  "settings.legacy": [
+    "传统 ~/.minecraft",
+    "Legacy ~/.minecraft",
+    "従来の ~/.minecraft",
+    "傳統 ~/.minecraft"
+  ],
+  "settings.folder_status": [
+    "目录状态",
+    "Folder status",
+    "フォルダー状態",
+    "目錄狀態"
+  ],
+  "settings.accessible": [
+    "可访问",
+    "Available",
+    "アクセス可能",
+    "可存取"
+  ],
+  "settings.missing": [
+    "尚未创建",
+    "Not created",
+    "未作成",
+    "尚未建立"
+  ],
+  "settings.local_instances": [
+    "本地实例",
+    "Local instances",
+    "ローカルインスタンス",
+    "本機實例"
+  ],
+  "settings.current_instance": [
+    "当前实例",
+    "Current instance",
+    "現在のインスタンス",
+    "目前實例"
+  ],
+  "settings.not_selected": [
+    "未选择",
+    "Not selected",
+    "未選択",
+    "未選擇"
+  ],
+  "settings.not_signed_in": [
+    "未登录 Microsoft",
+    "Not signed in to Microsoft",
+    "Microsoft 未サインイン",
+    "未登入 Microsoft"
+  ],
+  "settings.offline_active": [
+    "当前使用本地离线档案",
+    "Using the local offline profile",
+    "ローカルオフラインプロフィールを使用中",
+    "目前使用本機離線檔案"
+  ],
+  "settings.detected_java": [
+    "检测到 %d 个运行时",
+    "%d runtimes detected",
+    "%d 個のランタイムを検出",
+    "偵測到 %d 個執行環境"
+  ],
+  "settings.custom": [
+    "自定义",
+    "Custom",
+    "カスタム",
+    "自訂"
+  ],
+  "settings.recommended": [
+    "推荐",
+    "Recommended",
+    "推奨",
+    "建議"
+  ],
+  "settings.no_java": [
+    "没有检测到可用 Java。请安装 Temurin/OpenJDK，或手动选择 java。",
+    "No usable Java runtime was found. Install Temurin/OpenJDK or choose java manually.",
+    "使用可能な Java がありません。Temurin/OpenJDK をインストールするか手動で選択してください。",
+    "未偵測到可用 Java。請安裝 Temurin/OpenJDK，或手動選擇 java。"
+  ],
+  "settings.layout_hint": [
+    "编辑模式下可拖动所有元素；拖动组件右下角手柄可调整大小。",
+    "Drag any element in edit mode; drag a widget's lower-right handle to resize it.",
+    "編集モードですべての要素を移動でき、ウィジェット右下のハンドルでサイズを変更できます。",
+    "編輯模式下可拖曳所有元素；拖曳小工具右下角手柄可調整大小。"
+  ],
+  "settings.privacy_detail": [
+    "日志发给 AI 前会隐藏常见令牌与主目录路径；提交前仍请检查私人内容。",
+    "Common tokens and home paths are redacted before logs are sent to AI. Review private content before sending.",
+    "AI に送信する前に一般的なトークンとホームパスを隠します。送信前に個人情報を確認してください。",
+    "日誌傳送給 AI 前會隱藏常見權杖與主目錄路徑；傳送前仍請檢查私人內容。"
+  ],
+  "assistant.privacy": [
+    "日志只会发送到你配置的供应商，并先隐藏常见令牌与主目录路径。",
+    "Logs are sent only to your configured provider after common tokens and home paths are redacted.",
+    "ログは一般的なトークンとホームパスを隠した後、設定したプロバイダーにのみ送信されます。",
+    "日誌只會傳送到你設定的供應商，並先隱藏常見權杖與主目錄路徑。"
+  ],
+  "command.refresh": [
+    "刷新实例",
+    "Refresh instances",
+    "インスタンスを更新",
+    "重新整理實例"
+  ],
+  "command.launch": [
+    "启动 Minecraft",
+    "Launch Minecraft",
+    "Minecraft を起動",
+    "啟動 Minecraft"
+  ],
+  "login.copy": [
+    "复制代码",
+    "Copy code",
+    "コードをコピー",
+    "複製代碼"
+  ],
+  "login.approval": [
+    "申请 Minecraft Services 审批",
+    "Request Minecraft Services approval",
+    "Minecraft Services の承認を申請",
+    "申請 Minecraft Services 審核"
+  ],
+  "account.missing_client": [
+    "缺少 Microsoft Client ID。",
+    "Microsoft Client ID is missing.",
+    "Microsoft Client ID がありません。",
+    "缺少 Microsoft Client ID。"
+  ],
+  "account.invalid_client": [
+    "Client ID 格式无效。",
+    "The Client ID format is invalid.",
+    "Client ID の形式が無効です。",
+    "Client ID 格式無效。"
+  ],
+  "account.unapproved": [
+    "此 Client ID 尚未获得 Minecraft Services 批准。请提交审批，或导入官方启动器账户。",
+    "This Client ID is not approved for Minecraft Services. Request approval or import an Official Launcher account.",
+    "この Client ID は Minecraft Services で承認されていません。承認を申請するか、公式ランチャーのアカウントを読み込んでください。",
+    "此 Client ID 尚未獲得 Minecraft Services 核准。請提交審核，或匯入官方啟動器帳戶。"
+  ],
+  "account.invalid_response": [
+    "Microsoft 返回了无法识别的响应。",
+    "Microsoft returned an unrecognized response.",
+    "Microsoft から認識できない応答が返されました。",
+    "Microsoft 傳回了無法識別的回應。"
+  ],
+  "account.no_minecraft": [
+    "该账户没有 Minecraft: Java Edition 使用权，或尚未创建游戏档案。",
+    "This account does not own Minecraft: Java Edition or has no game profile yet.",
+    "このアカウントは Minecraft: Java Edition を所有していないか、ゲームプロフィールがありません。",
+    "此帳戶沒有 Minecraft: Java Edition 使用權，或尚未建立遊戲檔案。"
+  ],
+  "account.no_official": [
+    "没有找到有效的官方启动器会话。请先在官方启动器登录并保持在线。",
+    "No valid Official Launcher session was found. Sign in there and keep it online, then retry.",
+    "有効な公式ランチャーのセッションがありません。公式ランチャーでサインインしてから再試行してください。",
+    "找不到有效的官方啟動器工作階段。請先在官方啟動器登入並保持連線。"
+  ],
+  "account.request_code": [
+    "正在请求登录代码",
+    "Requesting a sign-in code",
+    "サインインコードを要求中",
+    "正在要求登入代碼"
+  ],
+  "account.wait_browser": [
+    "等待浏览器确认",
+    "Waiting for browser confirmation",
+    "ブラウザーでの確認を待っています",
+    "等待瀏覽器確認"
+  ],
+  "account.connect_xbox": [
+    "正在连接 Xbox Live",
+    "Connecting to Xbox Live",
+    "Xbox Live に接続中",
+    "正在連接 Xbox Live"
+  ],
+  "account.login_done": [
+    "登录完成",
+    "Signed in",
+    "サインイン完了",
+    "登入完成"
+  ],
+  "account.login_failed": [
+    "登录失败",
+    "Sign-in failed",
+    "サインイン失敗",
+    "登入失敗"
+  ],
+  "account.read_official": [
+    "正在读取官方启动器账户",
+    "Reading Official Launcher accounts",
+    "公式ランチャーのアカウントを読み込み中",
+    "正在讀取官方啟動器帳戶"
+  ],
+  "account.import_done": [
+    "已导入官方启动器账户",
+    "Official Launcher account imported",
+    "公式ランチャーのアカウントを読み込みました",
+    "已匯入官方啟動器帳戶"
+  ],
+  "account.import_failed": [
+    "导入失败",
+    "Import failed",
+    "読み込み失敗",
+    "匯入失敗"
+  ],
+  "account.refreshing": [
+    "正在刷新账户",
+    "Refreshing account",
+    "アカウントを更新中",
+    "正在重新整理帳戶"
+  ],
+  "account.refreshed": [
+    "账户已刷新",
+    "Account refreshed",
+    "アカウントを更新しました",
+    "帳戶已重新整理"
+  ],
+  "account.expired_code": [
+    "登录代码已过期，请重试。",
+    "The sign-in code expired. Try again.",
+    "サインインコードの有効期限が切れました。再試行してください。",
+    "登入代碼已過期，請重試。"
+  ],
+  "account.public_client": [
+    "Azure 应用未启用 Allow public client flows。",
+    "Allow public client flows is disabled for this Azure app.",
+    "Azure アプリで Allow public client flows が無効です。",
+    "Azure 應用程式未啟用 Allow public client flows。"
+  ],
+  "account.child": [
+    "儿童账户需要先加入由成年人管理的 Microsoft Family。",
+    "A child account must join a Microsoft Family managed by an adult.",
+    "子供用アカウントは大人が管理する Microsoft Family に参加する必要があります。",
+    "兒童帳戶需要先加入由成年人管理的 Microsoft Family。"
+  ],
+  "console.waiting": [
+    "等待启动输出…",
+    "Waiting for launch output…",
+    "起動出力を待っています…",
+    "等待啟動輸出…"
+  ],
+  "console.language_changed": [
+    "界面语言已更改。Minecraft 原始日志保持游戏输出语言。",
+    "UI language changed. Raw Minecraft logs remain in the game's output language.",
+    "表示言語を変更しました。Minecraft の生ログはゲームの出力言語のままです。",
+    "介面語言已變更。Minecraft 原始日誌會保留遊戲輸出語言。"
+  ],
+  "log.stop_requested": [
+    "已请求停止游戏。",
+    "Stop requested.",
+    "ゲームの停止を要求しました。",
+    "已要求停止遊戲。"
+  ],
+  "log.preparing": [
+    "正在准备 %@…",
+    "Preparing %@…",
+    "%@ を準備中…",
+    "正在準備 %@…"
+  ],
+  "log.ended": [
+    "游戏进程结束，退出码 %d。",
+    "Game process ended with exit code %d.",
+    "ゲームプロセスが終了しました。終了コード %d。",
+    "遊戲程序已結束，結束代碼 %d。"
+  ],
+  "log.started": [
+    "Minecraft 已启动，PID %d。",
+    "Minecraft started with PID %d.",
+    "Minecraft を起動しました。PID %d。",
+    "Minecraft 已啟動，PID %d。"
+  ],
+  "log.failed": [
+    "启动失败：%@",
+    "Launch failed: %@",
+    "起動失敗：%@",
+    "啟動失敗：%@"
+  ],
+  "loader.fabric_detail": [
+    "轻量、生态广泛",
+    "Lightweight with a broad ecosystem",
+    "軽量で幅広いエコシステム",
+    "輕量且生態廣泛"
+  ],
+  "loader.quilt_detail": [
+    "兼容 Fabric 生态",
+    "Compatible with the Fabric ecosystem",
+    "Fabric エコシステムと互換",
+    "相容 Fabric 生態"
+  ],
+  "loader.forge_detail": [
+    "传统大型模组生态",
+    "Established ecosystem for large mods",
+    "大規模 Mod 向けの定番エコシステム",
+    "傳統大型模組生態"
+  ],
+  "loader.neoforge_detail": [
+    "现代 Forge 分支",
+    "Modern Forge fork",
+    "モダンな Forge フォーク",
+    "現代 Forge 分支"
+  ],
+  "loader.optifine_detail": [
+    "使用官网安装器 JAR",
+    "Uses the installer JAR from the official site",
+    "公式サイトのインストーラー JAR を使用",
+    "使用官網安裝器 JAR"
+  ],
+  "ai.custom": [
+    "自定义（OpenAI 兼容）",
+    "Custom (OpenAI-compatible)",
+    "カスタム（OpenAI 互換）",
+    "自訂（OpenAI 相容）"
+  ],
+  "installer.loading_manifest": [
+    "正在读取版本清单…",
+    "Loading version manifest…",
+    "バージョン一覧を読み込み中…",
+    "正在讀取版本清單…"
+  ],
+  "content.searching": [
+    "正在搜索兼容内容…",
+    "Searching compatible content…",
+    "互換性のあるコンテンツを検索中…",
+    "正在搜尋相容內容…"
+  ],
+  "installer.download": [
+    "直接下载",
+    "Download",
+    "ダウンロード",
+    "直接下載"
+  ],
+  "instances.delete": [
+    "删除",
+    "Delete",
+    "削除",
+    "刪除"
+  ],
+  "instances.delete_title": [
+    "删除这个实例？",
+    "Delete this instance?",
+    "このインスタンスを削除しますか？",
+    "刪除此實例？"
+  ],
+  "instances.delete_detail": [
+    "“%@”的版本文件夹将被移到废纸篓。世界存档、资源包和全局模组文件夹不会被删除。",
+    "The version folder for “%@” will be moved to the Trash. Worlds, resource packs, and global mod folders will not be deleted.",
+    "「%@」のバージョンフォルダーをゴミ箱に移動します。ワールド、リソースパック、共通の Mod フォルダーは削除されません。",
+    "「%@」的版本資料夾將移到垃圾桶。世界存檔、資源包及全域模組資料夾不會被刪除。"
+  ],
+  "instances.delete_failed": [
+    "无法删除实例",
+    "Could not delete instance",
+    "インスタンスを削除できませんでした",
+    "無法刪除實例"
+  ],
+  "settings.manage_widgets": [
+    "管理桌面组件",
+    "Manage Home widgets",
+    "ホームウィジェットを管理",
+    "管理主頁小工具"
+  ],
+  "widget.add": [
+    "添加组件",
+    "Add widget",
+    "ウィジェットを追加",
+    "新增小工具"
+  ],
+  "widget.remove": [
+    "移除组件",
+    "Remove widget",
+    "ウィジェットを削除",
+    "移除小工具"
+  ],
+  "widget.profile": [
+    "账户",
+    "Account",
+    "アカウント",
+    "帳戶"
+  ],
+  "widget.clock": [
+    "时钟",
+    "Clock",
+    "時計",
+    "時鐘"
+  ],
+  "widget.instance": [
+    "实例",
+    "Instance",
+    "インスタンス",
+    "實例"
+  ],
+  "widget.runtime": [
+    "运行环境",
+    "Runtime",
+    "ランタイム",
+    "執行環境"
+  ],
+  "widget.all_added": [
+    "所有组件都已添加",
+    "All widgets are added",
+    "すべて追加済み",
+    "所有小工具均已新增"
+  ]
+}

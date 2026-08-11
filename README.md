@@ -2,7 +2,7 @@
 
 **Core, More, Miore.**
 
-A native Minecraft launcher for macOS, built entirely in Swift.
+A native Minecraft launcher for macOS, built entirely in Swift ♡
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 

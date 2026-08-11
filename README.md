@@ -53,7 +53,7 @@ Offline profiles remain available for local and appropriately configured offline
 ## Build From Source
 
 ```sh
-git clone <your-repository-url>
+git clone https://github.com/l1iize/miore.git
 cd miore
 swift test
 ./scripts/build-app.sh

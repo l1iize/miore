@@ -2,7 +2,7 @@
 
 **Core, More, Miore.**
 
-一款为 macOS 打造、100% 使用 Swift 编写的原生 Minecraft 启动器。
+一款为 macOS 打造、100% 使用 Swift 编写的原生 Minecraft 启动器 ♡
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 

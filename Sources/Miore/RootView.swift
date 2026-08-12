@@ -4,6 +4,7 @@ struct RootView: View {
     @ObservedObject var model: AppModel
     @ObservedObject private var settings: SettingsStore
     @ObservedObject private var launcher: MinecraftLauncher
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     init(model: AppModel) { self.model = model; self.settings = model.settings; self.launcher = model.launcher }
 
@@ -28,7 +29,14 @@ struct RootView: View {
                     case .settings: SettingsView(model: model)
                     }
                 }
+                .id(model.section)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .transition(reduceMotion ? .opacity : .asymmetric(
+                    insertion: .offset(x: 18).combined(with: .opacity),
+                    removal: .offset(x: -12).combined(with: .opacity)
+                ))
+                .animation(reduceMotion ? .easeOut(duration: 0.12) : .spring(response: 0.3, dampingFraction: 0.86), value: model.section)
+                .clipped()
             }
             if let notice = model.notice {
                 NoticeView(text: notice) { model.notice = nil }

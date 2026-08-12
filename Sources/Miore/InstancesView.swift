@@ -111,27 +111,40 @@ private struct InstallerOverlay<Content: View>: View {
             }
             .buttonStyle(.plain)
 
-            ZStack(alignment: .topTrailing) {
-                content
-                Button {
-                    isPresented = false
-                } label: {
-                    Image(systemName: "xmark")
-                        .font(.system(size: 11, weight: .semibold))
-                        .frame(width: 30, height: 30)
-                        .contentShape(Circle())
-                }
-                .buttonStyle(.plain)
-                .foregroundColor(MioreTheme.muted)
-                .background(Circle().fill(MioreTheme.background))
-                .overlay(Circle().stroke(MioreTheme.border, lineWidth: 1))
-                .offset(x: 15, y: -15)
-                .help(L10n.t("common.close"))
-                .keyboardShortcut(.cancelAction)
-            }
-            .shadow(color: .black.opacity(0.45), radius: 32, y: 14)
+            content
+                .shadow(color: .black.opacity(0.45), radius: 32, y: 14)
         }
         .ignoresSafeArea()
+    }
+}
+
+private struct InstallerHeader<Trailing: View>: View {
+    let title: String
+    let detail: String
+    let dismiss: () -> Void
+    @ViewBuilder let trailing: Trailing
+
+    var body: some View {
+        HStack(spacing: 14) {
+            VStack(alignment: .leading, spacing: 5) {
+                Text(title).font(.miore(size: 20, weight: .medium))
+                Text(detail).font(.miore(size: 11)).foregroundColor(MioreTheme.muted)
+            }
+            Spacer()
+            trailing
+            Button(action: dismiss) {
+                Image(systemName: "xmark")
+                    .font(.system(size: 11, weight: .semibold))
+                    .frame(width: 30, height: 30)
+                    .contentShape(Circle())
+            }
+            .buttonStyle(.plain)
+            .foregroundColor(MioreTheme.muted)
+            .background(Circle().fill(MioreTheme.background))
+            .overlay(Circle().stroke(MioreTheme.border, lineWidth: 1))
+            .help(L10n.t("common.close"))
+            .keyboardShortcut(.cancelAction)
+        }
     }
 }
 
@@ -149,14 +162,11 @@ private struct LoaderInstallerSheet: View {
     }
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
-            HStack {
-                VStack(alignment: .leading, spacing: 5) {
-                    Text(L10n.t("instances.install_loader")).font(.miore(size: 20, weight: .medium))
-                    Text(L10n.t("installer.target", model.selectedInstance?.gameVersion ?? L10n.t("installer.not_selected"))).font(.miore(size: 11)).foregroundColor(MioreTheme.muted)
-                }
-                Spacer()
-                Color.clear.frame(width: 34, height: 30)
-            }
+            InstallerHeader(
+                title: L10n.t("instances.install_loader"),
+                detail: L10n.t("installer.target", model.selectedInstance?.gameVersion ?? L10n.t("installer.not_selected")),
+                dismiss: { isPresented = false }
+            ) { EmptyView() }
             Hairline()
             ForEach(InstallableLoader.allCases) { loader in
                 HStack(spacing: 14) {
@@ -177,7 +187,7 @@ private struct LoaderInstallerSheet: View {
             }
             if let error = installer.error { Text(error).font(.miore(size: 10)).foregroundColor(MioreTheme.muted) }
             Spacer()
-        }.padding(24).frame(width: 580).frame(maxHeight: 440).background(MioreTheme.background).foregroundColor(MioreTheme.foreground)
+        }.padding(24).frame(width: 620).frame(maxHeight: 440).background(MioreTheme.background).foregroundColor(MioreTheme.foreground)
     }
 }
 
@@ -197,14 +207,12 @@ private struct InstallerSheet: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                VStack(alignment: .leading, spacing: 5) {
-                    Text(L10n.t("installer.minecraft")).font(.miore(size: 20, weight: .medium))
-                    Text(L10n.t("installer.minecraft_detail")).font(.miore(size: 11)).foregroundColor(MioreTheme.muted)
-                }
-                Spacer()
+            InstallerHeader(
+                title: L10n.t("installer.minecraft"),
+                detail: L10n.t("installer.minecraft_detail"),
+                dismiss: { isPresented = false }
+            ) {
                 Toggle(L10n.t("installer.snapshots"), isOn: $includeSnapshots).toggleStyle(.checkbox).font(.miore(size: 11))
-                Color.clear.frame(width: 34, height: 30)
             }
             Hairline()
             if installer.loadingManifest {
@@ -231,7 +239,10 @@ private struct InstallerSheet: View {
                                     }
                                 } else {
                                     Button(L10n.t("common.install")) {
-                                        installer.install(version, gameDirectory: model.settings.gameDirectory) { model.refresh() }
+                                        installer.install(version, gameDirectory: model.settings.gameDirectory) {
+                                            model.refresh()
+                                            isPresented = false
+                                        }
                                     }.buttonStyle(GhostButtonStyle()).disabled(installer.installingID != nil)
                                 }
                             }.padding(.horizontal, 12).frame(height: 58)
